@@ -23,7 +23,7 @@ const generatePopulars = (data) => {
     const movieList = selectRandomElements(data.results, 6)
     movieList.forEach(item => {
         document.querySelector('.movie-grid').innerHTML += `               
-        <a href="details.html?id=${item.id}" class="movie-card">
+        <a href="assets/pages/details-new.html?id=${item.id}" class="movie-card">
             <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Loetoeng Kasarung">
                 <div class="movie-info">
                     <h3>${item.title.slice(0, 25)}${item.title.length > 25 ? '...' : ''}</h3>
@@ -62,7 +62,7 @@ const trendingMovies = () => {
 const generateTrendings = (data) => {    
     const trendList = selectRandomElements(data, 2)
     trendList.forEach(movie => {
-        document.querySelector('.featured-content').innerHTML += `<a class="featured-item">
+        document.querySelector('.featured-content').innerHTML += `<a class="featured-item" href="assets/pages/details-new.html?id=${movie.id}">
                     <img src="https://image.tmdb.org/t/p/original${movie.backdrop_path}" alt="${movie.title}">
                     <div class="featured-item-info">
                         <h2>${movie.title}</h2>
@@ -115,7 +115,7 @@ document.querySelectorAll('.play-button').forEach(button => {
 });
 
 const searchInput = document.querySelector('.search-bar input');
-searchInput.addEventListener('input', (e) => {
+searchInput?.addEventListener('input', (e) => {
     console.log(`Searching for: ${e.target.value}`);
 });
 

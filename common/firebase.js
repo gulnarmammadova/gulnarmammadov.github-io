@@ -121,6 +121,8 @@ async function getLikedMovies() {
 
 
 
+
+
 export const signUp = async (firstName, lastName, email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);

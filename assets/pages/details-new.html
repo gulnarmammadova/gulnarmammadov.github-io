@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Substance - Movie Details</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%),
+                url('https://www.heavenofhorror.com/wp-content/uploads/2024/06/The-Substance-2024-body-horror.jpg') no-repeat center center / cover;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .movie-info {
+            display: flex;
+            gap: 2rem;
+            z-index: 1;
+        }
+
+        .movie-poster {
+            flex-shrink: 0;
+            width: 250px;
+            height: 375px;
+            border-radius: 8px;
+            box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .movie-details {
+            flex: 1;
+        }
+
+        .movie-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .movie-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .movie-rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .star {
+            color: #ffd700;
+            margin-right: 0.25rem;
+        }
+
+        .movie-genres {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .genre-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .movie-description {
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #e50914;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        /* Similar Movies section */
+        .similar-movies {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .movie-list {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .movie-card {
+            flex: 0 0 auto;
+            width: 200px;
+            background-color: #111;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .movie-card-info {
+            padding: 1rem;
+        }
+
+        .movie-card-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .movie-card-meta {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .movie-info {
+                flex-direction: column;
+            }
+
+            .movie-poster {
+                width: 200px;
+                height: 300px;
+            }
+
+            .movie-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="movie-info">
+                    <img src="/placeholder.svg" alt="The Substance Movie Poster" class="movie-poster">
+                    <div class="movie-details">
+                        <h1 class="movie-title">The Substance</h1>
+                        <div class="movie-meta">
+                            <div class="movie-rating">
+                                <span class="star">★</span>
+                                <span>7.3</span>
+                                <span style="color: #999; margin-left: 4px;">IMDB</span>
+                            </div>
+                            <div>141 min</div>
+                            <div>2024</div>
+                        </div>
+                        <div class="movie-genres">
+                            <span class="genre-badge">Horror</span>
+                            <span class="genre-badge">Science Fiction</span>
+                        </div>
+                        <p class="movie-description">
+                            A fading celebrity decides to use a black market drug, a cell-replicating substance that
+                            temporarily
+                            creates a younger, better version of herself.
+                        </p>
+                        <div class="cta-buttons">
+                            <a href="#" class="btn btn-primary">
+                                <span class="btn-icon">▶</span>
+                                Watch Now
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <span class="btn-icon">♥</span>
+                                Add to Favorites
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <span class="btn-icon">+</span>
+                                Add to Watchlist
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <span class="btn-icon">↗</span>
+                                Share
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="similar-movies">
+            <div class="container">
+                <h2 class="section-title">Similar Movies</h2>
+                <div class="movie-list">
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Extract the movie ID from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieId = parseInt(urlParams.get("id"));
+
+        // Base URL and headers for The Movie Database API
+        const baseURL = "https://api.themoviedb.org/3/movie";
+        const apiHeaders = {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2JlMjNiNjYwMTU5MWQyY2VmOTRkYzQ4NzE3NDU2NSIsIm5iZiI6MTczMjk4MzYyOS42OTUwMDAyLCJzdWIiOiI2NzRiM2I0ZDMzOWI3YjY3MGM5YzdmNDUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KBDTblfUubwOSfQnregIopVpkxXeHPlAqDmRLS5tMuo'
+        };
+
+        // Fetch and display movie details
+        fetch(`${baseURL}/${movieId}?language=en-US`, { method: 'GET', headers: apiHeaders })
+            .then(res => res.json())
+            .then(movie => {
+                // Update hero background
+                const heroSection = document.querySelector('.hero');
+                heroSection.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`;
+
+                // Update movie poster
+                const poster = document.querySelector('.movie-poster');
+                poster.src = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
+                poster.alt = `${movie.title} Poster`;
+
+                // Update movie details
+                document.querySelector('.movie-title').textContent = movie.title;
+                document.querySelector('.movie-meta').innerHTML = `
+            <div class="movie-rating">
+                <span class="star">★</span>
+                <span>${movie.vote_average.toFixed(1)}</span>
+                <span style="color: #999; margin-left: 4px;">IMDB</span>
+            </div>
+            <div>${movie.runtime} min</div>
+            <div>${movie.release_date.slice(0, 4)}</div>
+        `;
+
+                // Update genres
+                const genresContainer = document.querySelector('.movie-genres');
+                movie.genres.forEach(genre => {
+                    const genreBadge = document.createElement('span');
+                    genreBadge.className = 'genre-badge';
+                    genreBadge.textContent = genre.name;
+                    genresContainer.appendChild(genreBadge);
+                });
+
+                // Update movie description
+                document.querySelector('.movie-description').textContent = movie.overview;
+            })
+            .catch(err => console.error('Error fetching movie details:', err));
+
+        // Fetch and display similar movies
+        const fetchSimilarMovies = () => {
+            fetch(`${baseURL}/${movieId}/similar?language=en-US&page=1`, { method: 'GET', headers: apiHeaders })
+                .then(res => res.json())
+                .then(data => {
+                    const similarMoviesContainer = document.querySelector('.movie-list');
+                    data.results
+                        .filter(movie => movie.poster_path)
+                        .slice(0, 12)
+                        .forEach(movie => {
+                            const movieCard = document.createElement('div');
+                            movieCard.className = 'movie-card';
+                            movieCard.innerHTML = `
+                        <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.title}">
+                        <div class="movie-card-info">
+                            <div class="movie-card-title">${movie.title.slice(0, 25)}${movie.title.length > 25 ? '...' : ''}</div>
+                            <div class="movie-card-meta">${movie.release_date.slice(0, 4)} • ${movie.vote_average.toFixed(1)}</div>
+                        </div>
+                    `;
+                            similarMoviesContainer.appendChild(movieCard);
+                        });
+                })
+                .catch(err => console.error('Error fetching similar movies:', err));
+        };
+
+        fetchSimilarMovies();
+
+    </script>
+</body>
+
+</html>

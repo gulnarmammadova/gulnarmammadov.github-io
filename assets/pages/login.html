@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMU - Create an account</title>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">AMU</div>
+            <a href="../../index.html" class="back-link">Back to website</a>
+            <div class="hero-content">
+                
+                <div class="slide-indicators">
+                    <button class="indicator active"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="form-container login">
+                <h2>Login to your account</h2>
+                <p>Do not you have an account? <a href="register.html">Register</a></p>
+                <form id="signin-form">
+                    <input type="email" placeholder="Email" required>
+                    <div class="password-input">
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <button type="button" id="toggle-password">
+                            <img src="https://api.iconify.design/lucide:eye.svg" alt="Show password" id="password-icon">
+                        </button>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../../common/firebase.js"></script>
+</body>
+</html>

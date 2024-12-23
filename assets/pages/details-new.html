@@ -29,8 +29,8 @@
 
         /* Hero section */
         .hero {
+            padding-top: 80px;
             position: relative;
-            height: 70vh;
             display: flex;
             align-items: flex-end;
             padding-bottom: 2rem;
@@ -205,11 +205,44 @@
                 width: 100%;
             }
         }
+
+
+        header {
+            padding: 20px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                background-color: black;
+                padding: 5px 10px;
+                border-radius: 4px;
+                color: #fff;
+                font-size: 20px;
+                border: 0;
+                text-decoration: none;
+            }
+        }
     </style>
 </head>
 
 <body>
     <main class="details-page" >
+        <header>
+            <div class="container">
+                <a href="/" >  < Back to home </a>
+
+                <div class="profile" ></div>
+            </div>
+        </header>
         <section class="hero">
             <div class="container">
                 <div class="movie-info">
@@ -265,19 +298,18 @@
 
 
 
+
+
     <script>
-        // Extract the movie ID from the URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const movieId = parseInt(urlParams.get("id"));
 
-        // Base URL and headers for The Movie Database API
         const baseURL = "https://api.themoviedb.org/3/movie";
         const apiHeaders = {
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2JlMjNiNjYwMTU5MWQyY2VmOTRkYzQ4NzE3NDU2NSIsIm5iZiI6MTczMjk4MzYyOS42OTUwMDAyLCJzdWIiOiI2NzRiM2I0ZDMzOWI3YjY3MGM5YzdmNDUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KBDTblfUubwOSfQnregIopVpkxXeHPlAqDmRLS5tMuo'
         };
 
-        // Fetch and display movie details
         fetch(`${baseURL}/${movieId}?language=en-US`, { method: 'GET', headers: apiHeaders })
             .then(res => res.json())
             .then(movie => {

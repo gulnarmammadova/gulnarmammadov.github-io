@@ -33,7 +33,7 @@
                 <a href="assets/pages/login.html" class="login-btn">Login</a>
                 <div class="profile-button hidden">
                     <div class="has-drop">
-                        <a class="user-name"></a>
+                        <a href="assets/pages/profile.html" class="user-name"></a>
                         <div class="drop">
                             <button class="logout-btn">Logout</button>
                             <button class="logout-btn">Logout</button>
@@ -73,7 +73,7 @@
             const searchValue = document.querySelector('header input').value;
 
             if (searchValue) {
-                window.location.href = `/assets/pages/search.html?query=${searchValue}&page=1`
+                window.location.href = `assets/pages/search.html?query=${searchValue}&page=1`
             } else {
                 return
             }

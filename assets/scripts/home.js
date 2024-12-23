@@ -8,6 +8,16 @@ const options = {
     }
 };
 
+async function fetchMoviesByGenre(genreId) {
+    try {
+        const response = await fetch(`${API_URL}/discover/movie?with_genres=${genreId}`, options);
+
+        const data = await response.json();
+        return data.results; // Array of movies
+    } catch (error) {
+        console.error("Error fetching movies by genre:", error);
+    }
+}
 
 const topRatedUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
 
@@ -45,9 +55,16 @@ const generatePopulars = (data, wrapper) => {
 }
 
 const generateGenres = (genres) => {
+    console.log(genres)
     const genreList = genres.genres
     genreList.forEach(genre => {
-        document.querySelector('.categories').innerHTML += `<a class="category-button">${genre.name}</a>`
+        document.querySelector('.categories').innerHTML += `<a data-value=${genre.id} class="category-button">${genre.name}</a>`
+    })
+
+    document.querySelectorAll('.categories a').forEach(item => {
+        item.addEventListener('click', ()=> {
+            window.location.href = `/assets/pages/category.html?id=${item.getAttribute('data-value')}`
+        })
     })
 
 }

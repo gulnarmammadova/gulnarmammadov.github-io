@@ -110,14 +110,15 @@
                 </div>
             </header>
 
-            <div class="content-section">
-                <h2 class="section-title">Results for <span class="query"></span></h2>
-                <div class="watchlist">
+            <div class="movie-grid">
 
-                </div>
 
-                <div class="pagination"></div>
             </div>
+
+
+            <div class="pagination"></div>
+
+
         </div>
     </div>
 
@@ -150,7 +151,7 @@
             const searchValue = document.querySelector('header input').value;
 
             if (searchValue) {
-                window.location.href = `assets/pages/search.html?query=${searchValue}&page=1`
+                window.location.href = `search.html?query=${searchValue}&page=1`
             } else {
                 return
             }
@@ -181,25 +182,35 @@
     </script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const searchQeury = parseInt(urlParams.get("query"));
-        const page = parseInt(urlParams.get("page"));
 
 
-        const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
-        const apiHeaders = {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2JlMjNiNjYwMTU5MWQyY2VmOTRkYzQ4NzE3NDU2NSIsIm5iZiI6MTczMjk4MzYyOS42OTUwMDAyLCJzdWIiOiI2NzRiM2I0ZDMzOWI3YjY3MGM5YzdmNDUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KBDTblfUubwOSfQnregIopVpkxXeHPlAqDmRLS5tMuo'
+        const TMDB_BASE_URL = '';
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2JlMjNiNjYwMTU5MWQyY2VmOTRkYzQ4NzE3NDU2NSIsIm5iZiI6MTczMjk4MzYyOS42OTUwMDAyLCJzdWIiOiI2NzRiM2I0ZDMzOWI3YjY3MGM5YzdmNDUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KBDTblfUubwOSfQnregIopVpkxXeHPlAqDmRLS5tMuo'
+            }
         };
 
-        document.querySelector('.query').textContent = `"${urlParams.get("query")}"`
+        async function fetchMoviesByGenre() {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${urlParams.get("id")}`, options);
+
+                const data = await response.json();
+                return data.results; 
+            } catch (error) {
+                console.error("Error fetching movies by genre:", error);
+            }
+        }
 
 
 
-        fetch(`${TMDB_BASE_URL}/search/movie?query=${urlParams.get("query")}&page=${page}`, { method: 'GET', headers: apiHeaders }).then(r => r.json()).then(res => {
 
-            if (res.results.length > 0) {
-                res.results.map(item => {
-                    document.querySelector(".watchlist").innerHTML += `<a href="/assets/pages/details-new.html?id=${item.id}" class="movie-card">
+        fetchMoviesByGenre().then(res => {
+            console.log(res)
+            res.map(item => {
+                document.querySelector(".movie-grid").innerHTML += `<a href="/assets/pages/details-new.html?id=${item.id}" class="movie-card">
                                 <div class="img-box">
                                     <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Movie Poster">
                                 </div>
@@ -208,10 +219,8 @@
                                     <p>${item.vote_average?.toFixed(1)} | ${item.release_date?.slice(0, 4)}</p>
                                 </div>
                             </a>`
-                })
-            } else {
-                document.querySelector(".watchlist").innerHTML = 'No results found!'
-            }
+            })
+
 
             document.querySelector('.pagination').innerHTML = res.total_pages > 1 ? `
 ${(res.page - 4) >= 1 ? `<button class="page-btn ${res.page - 4 == page ? "active" : ""}" >${res.page - 4}</button>` : ""}
@@ -232,7 +241,6 @@ ${res.page + 4 <= res.total_pages ? `<button class="page-btn ${res.page + 4 == p
                 })
             });
         })
-
 
 
 

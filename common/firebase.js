@@ -88,6 +88,8 @@ onAuthStateChanged(auth, (user) => {
     } else {
         if (!window.location.href.includes('profile')) {
             document.querySelector('header .profile-icon').setAttribute('href', '/assets/pages/login.html')
+        } else {
+            window.location.href = '/'
         }
 
     }

@@ -33,6 +33,10 @@ onAuthStateChanged(auth, (user) => {
         }
         renderUserData(user.uid)
         if (window.location.href.includes('profile')) {
+            document.querySelector('header button').addEventListener('click', ()=> {
+                window.location.href = '/'
+                logoutUser()
+            })
             getWatchlist().then(r => {
                 document.querySelector('.watchlists h3').textContent = r.length
                 r.map(item => {
@@ -79,9 +83,12 @@ onAuthStateChanged(auth, (user) => {
                     })
                 })
             })
-        }
+        } 
         logoutBtn?.addEventListener('click', () => logoutUser())
     } else {
+        if (!window.location.href.includes('profile')) {
+            document.querySelector('header .profile-icon').setAttribute('href', '/assets/pages/login.html')
+        }
 
     }
 });
@@ -89,8 +96,7 @@ onAuthStateChanged(auth, (user) => {
 function logoutUser() {
     signOut(auth)
         .then(() => {
-            console.log("User logged out successfully");
-            alert("You have been logged out.");
+            window.location.reload()
         })
         .catch((error) => {
             console.error("Error during logout:", error.message);

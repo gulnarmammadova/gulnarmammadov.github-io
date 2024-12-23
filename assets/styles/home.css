@@ -397,6 +397,10 @@ nav ul li a {
     .navbar {
         display: none;
     }
+
+    .login-btn {
+        display: none;
+    }
     .mobile-menu {
         display: flex;
     }

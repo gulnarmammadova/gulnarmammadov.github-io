@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="movie-card-overlay">
                                     <h3>${item.title.slice(0, 25)}${item.title.length > 25 ? '...' : ''}</h3>
-                                    <p>${item.vote_average.toFixed(1)} | ${item.release_date.slice(0, 4)}</p>
+                                    <p>${item.vote_average?.toFixed(1)} | ${item.release_date?.slice(0, 4)}</p>
                                 </div>
                             </a>`
                 })

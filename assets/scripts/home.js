@@ -8,19 +8,30 @@ const options = {
     }
 };
 
+
+const topRatedUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
+
+fetch(topRatedUrl, options)
+  .then(res => res.json())
+  .then(json => generatePopulars(json, 'top-rate'))
+  .catch(err => console.error(err));
+
 fetch(url, options)
     .then(res => res.json())
-    .then(data => generatePopulars(data))
+    .then(data =>{
+        generatePopulars(data, 'trending-section')
+        generatePopulars(data, 'popular-movies')
+    })
     .catch(err => console.error(err));
 
 fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=ccbe23b6601591d2cef94dc487174565&language=en-US').then(res => res.json())
     .then(response => generateGenres(response)).catch(err => console.log(err))
 
 
-const generatePopulars = (data) => {
+const generatePopulars = (data, wrapper) => {
     const movieList = selectRandomElements(data.results, 6)
     movieList.forEach(item => {
-        document.querySelector('.movie-grid').innerHTML += `               
+        document.querySelector(`.${wrapper} .movie-grid`).innerHTML += `               
         <a href="assets/pages/details-new.html?id=${item.id}" class="movie-card">
             <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Loetoeng Kasarung">
                 <div class="movie-info">

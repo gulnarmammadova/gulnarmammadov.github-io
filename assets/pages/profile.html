@@ -34,17 +34,16 @@
 
 
             <div class="profile-header">
-                <img src="/placeholder.svg?height=150&width=150" alt="Profile Picture" class="profile-image">
+                <div class="profile-image"></div>
                 <div class="profile-info">
                     <h1>John Doe</h1>
                     <p>@johndoe</p>
-                    <p>Film enthusiast | Movie critic | Always watching something new</p>
                     <div class="stats">
-                        <div class="stat-item">
+                        <div class="stat-item watched">
                             <h3>245</h3>
                             <p>Watched</p>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item watchlists">
                             <h3>52</h3>
                             <p>Watchlist</p>
                         </div>
@@ -61,45 +60,18 @@
             <div class="content-section">
                 <h2 class="section-title">My Watchlist</h2>
                 <div class="watchlist">
-                    <div class="movie-card">
-                        <div class="img-box">
-                            <img src="/placeholder.svg?height=300&width=200" alt="Movie Poster">
-                        </div>
-                        <div class="movie-card-overlay">
-                            <h3>Movie Title</h3>
-                            <p>2024 | Action</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <div class="img-box">
-                            <img src="/placeholder.svg?height=300&width=200" alt="Movie Poster">
-                        </div>
-                        <div class="movie-card-overlay">
-                            <h3>Movie Title</h3>
-                            <p>2024 | Drama</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <div class="img-box">
-                            <img src="/placeholder.svg?height=300&width=200" alt="Movie Poster">
-                        </div>
-                        <div class="movie-card-overlay">
-                            <h3>Movie Title</h3>
-                            <p>2024 | Comedy</p>
-                        </div>
-                    </div>
-                    <div class="movie-card">
-                        <div class="img-box">
-                            <img src="/placeholder.svg?height=300&width=200" alt="Movie Poster">
-                        </div>
-                        <div class="movie-card-overlay">
-                            <h3>Movie Title</h3>
-                            <p>2024 | Horror</p>
-                        </div>
-                    </div>
+
+        
+                </div>
+                <h2 class="section-title">Watched-movies</h2>
+                <div class="watched-list watchlist">
+
+        
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="module" src="../../common/firebase.js"></script>
 </body>
 </html>

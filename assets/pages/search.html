@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../../common/common.css">
+
+    <style>
+
+        .movie-card {
+            max-width: 250px;
+        }
+        .movie-card h3,
+        .movie-card p {
+            color: white;
+            margin: 5px;
+        }
+
+        .movie-card .img-box {
+            width: 100%;
+            background-color: black;
+            height: 280px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .watchlist {
+            display: grid;
+            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px !important;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            padding: 20px 0;
+
+            button {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .active {
+            background-color: black;
+            color: white;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+        }
+
+        
+    </style>
+</head>
+
+
+
+<body>
+    <div class="container-main">
+        <div class="container">
+            <header></header>
+
+            <div class="content-section">
+                <h2 class="section-title">Results for <span class="query"></span></h2>
+                <div class="watchlist">
+
+                </div>
+
+                <div class="pagination"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script type="module" src="../../common/firebase.js"></script>
+    <script type="module" src="../../common/header.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQeury = parseInt(urlParams.get("query"));
+        const page = parseInt(urlParams.get("page"));
+
+
+        const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+        const apiHeaders = {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjY2JlMjNiNjYwMTU5MWQyY2VmOTRkYzQ4NzE3NDU2NSIsIm5iZiI6MTczMjk4MzYyOS42OTUwMDAyLCJzdWIiOiI2NzRiM2I0ZDMzOWI3YjY3MGM5YzdmNDUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KBDTblfUubwOSfQnregIopVpkxXeHPlAqDmRLS5tMuo'
+        };
+
+        document.querySelector('.query').textContent = `"${urlParams.get("query")}"`
+
+
+
+        fetch(`${TMDB_BASE_URL}/search/movie?query=${urlParams.get("query")}&page=${page}`, { method: 'GET', headers: apiHeaders }).then(r => r.json()).then(res => {
+
+            if (res.results.length > 0) {
+                res.results.map(item => {
+                    document.querySelector(".watchlist").innerHTML += `<a href="/assets/pages/details-new.html?id=${item.id}" class="movie-card">
+                                <div class="img-box">
+                                    <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Movie Poster">
+                                </div>
+                                <div class="movie-card-overlay">
+                                    <h3>${item.title.slice(0, 25)}${item.title.length > 25 ? '...' : ''}</h3>
+                                    <p>${item.vote_average.toFixed(1)} | ${item.release_date.slice(0, 4)}</p>
+                                </div>
+                            </a>`
+                })
+            } else {
+                document.querySelector(".watchlist").innerHTML = 'No results found!'
+            }
+
+            document.querySelector('.pagination').innerHTML = res.total_pages > 1 ? `
+${(res.page - 4) >= 1 ? `<button class="page-btn ${res.page - 4 == page ? "active" : ""}" >${res.page - 4}</button>` : ""}
+${(res.page - 3) >= 1 ? `<button class="page-btn ${res.page - 3 == page ? "active" : ""}" >${res.page - 3}</button>` : ""}
+${(res.page - 2) >= 1 ? `<button class="page-btn ${res.page - 2 == page ? "active" : ""}" >${res.page - 2}</button>` : ""}
+${(res.page - 1) >= 1 ? `<button class="page-btn ${res.page - 1 == page ? "active" : ""}" >${res.page - 1}</button>` : ""}
+${res.page <= res.total_pages ? `<button class="page-btn ${res.page + 0 == page ? "active" : ""}" >${res.page}</button>` : ""}
+${res.page + 1 <= res.total_pages ? `<button class="page-btn ${res.page + 1 == page ? "active" : ""}" >${res.page + 1}</button>` : ""}
+${res.page + 2 <= res.total_pages ? `<button class="page-btn ${res.page + 2 == page ? "active" : ""}" >${res.page + 2}</button>` : ""}
+${res.page + 3 <= res.total_pages ? `<button class="page-btn ${res.page + 3 == page ? "active" : ""}" >${res.page + 3}</button>` : ""}
+${res.page + 4 <= res.total_pages ? `<button class="page-btn ${res.page + 4 == page ? "active" : ""}" >${res.page + 4}</button>` : ""}
+
+` : ""
+
+            document.querySelectorAll('.page-btn').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    window.location.href = `/assets/pages/search.html?query=${urlParams.get("query")}&page=${e.target.textContent}`
+                })
+            });
+        })
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

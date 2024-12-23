@@ -23,9 +23,11 @@ body {
     flex: 1;
     position: relative;
     overflow: hidden;
-    background-size: cover !important;
-    background-position: center !important;
+    background-position: bottom;
+    background-size: cover;
     background-repeat: no-repeat !important;
+
+    background-image: url('../images/batman.jpg');
 }
 
 .left-section::before {
@@ -68,6 +70,7 @@ body {
     left: 0;
     right: 0;
     text-align: center;
+
 }
 
 .hero-content h1 {

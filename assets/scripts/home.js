@@ -1,6 +1,4 @@
 const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
-const activeUser =JSON.parse(window.localStorage.getItem('active-user'))
-
 
 const options = {
     method: 'GET',
@@ -76,9 +74,6 @@ const generateTrendings = (data) => {
 
 }
 
-
-
-
 function selectRandomElements(array, count) {
     if (count > array.length) {
         return array
@@ -118,7 +113,5 @@ const searchInput = document.querySelector('.search-bar input');
 searchInput?.addEventListener('input', (e) => {
     console.log(`Searching for: ${e.target.value}`);
 });
-
-
 
 trendingMovies()

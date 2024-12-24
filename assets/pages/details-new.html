@@ -384,7 +384,7 @@
                         .slice(0, 12)
                         .forEach(movie => {
                             const movieCard = document.createElement('a');
-                            movieCard.setAttribute('href', `/assets/pages/details-new.html?id=${movie.id}`)
+                            movieCard.setAttribute('href', `details-new.html?id=${movie.id}`)
                             movieCard.className = 'movie-card';
                             movieCard.innerHTML = `
                         <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.title}">

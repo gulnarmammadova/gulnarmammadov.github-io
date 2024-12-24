@@ -150,7 +150,7 @@
             const searchValue = document.querySelector('header input').value;
 
             if (searchValue) {
-                window.location.href = `assets/pages/search.html?query=${searchValue}&page=1`
+                window.location.href = `search.html?query=${searchValue}&page=1`
             } else {
                 return
             }
@@ -228,7 +228,7 @@ ${res.page + 4 <= res.total_pages ? `<button class="page-btn ${res.page + 4 == p
 
             document.querySelectorAll('.page-btn').forEach(element => {
                 element.addEventListener('click', (e) => {
-                    window.location.href = `/assets/pages/search.html?query=${urlParams.get("query")}&page=${e.target.textContent}`
+                    window.location.href = `search.html?query=${urlParams.get("query")}&page=${e.target.textContent}`
                 })
             });
         })

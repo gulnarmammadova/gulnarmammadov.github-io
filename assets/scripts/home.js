@@ -63,7 +63,7 @@ const generateGenres = (genres) => {
 
     document.querySelectorAll('.categories a').forEach(item => {
         item.addEventListener('click', ()=> {
-            window.location.href = `/assets/pages/category.html?id=${item.getAttribute('data-value')}`
+            window.location.href = `assets/pages/category.html?id=${item.getAttribute('data-value')}`
         })
     })
 

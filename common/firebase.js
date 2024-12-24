@@ -234,7 +234,7 @@ const signIn = async (email, password) => {
         alert(`Welcome back, ${user.email}!`);
         console.log("User signed in:", user);
         setTimeout(() => {
-            window.location.href = '/index.html'
+            window.location.href = '/'
         }, 2000);
 
     } catch (error) {

@@ -34,7 +34,7 @@ onAuthStateChanged(auth, (user) => {
         renderUserData(user.uid)
         if (window.location.href.includes('profile')) {
             document.querySelector('header button').addEventListener('click', ()=> {
-                window.location.href = '/'
+                window.location.href = 'home.html'
                 logoutUser()
             })
             getWatchlist().then(r => {
@@ -48,7 +48,7 @@ onAuthStateChanged(auth, (user) => {
                     fetch(`https://api.themoviedb.org/3/movie/${item}?language=en-US`, { method: 'GET', headers: apiHeaders }).then(res => res.json()).then(res => {
     
                         
-                        document.querySelector('.watchlist').innerHTML += `<a href="/assets/pages/details-new.html?id=${res.id}" class="movie-card">
+                        document.querySelector('.watchlist').innerHTML += `<a href="details-new.html?id=${res.id}" class="movie-card">
                                     <div class="img-box">
                                         <img src="https://image.tmdb.org/t/p/original${res.poster_path}" alt="Movie Poster">
                                     </div>
@@ -71,7 +71,7 @@ onAuthStateChanged(auth, (user) => {
                     fetch(`https://api.themoviedb.org/3/movie/${item}?language=en-US`, { method: 'GET', headers: apiHeaders }).then(res => res.json()).then(res => {
     
                         
-                        document.querySelector('.watched-list').innerHTML += `<a href="/assets/pages/details-new.html?id=${res.id}" class="movie-card">
+                        document.querySelector('.watched-list').innerHTML += `<a href="details-new.html?id=${res.id}" class="movie-card">
                                     <div class="img-box">
                                         <img src="https://image.tmdb.org/t/p/original${res.poster_path}" alt="Movie Poster">
                                     </div>
@@ -87,9 +87,9 @@ onAuthStateChanged(auth, (user) => {
         logoutBtn?.addEventListener('click', () => logoutUser())
     } else {
         if (!window.location.href.includes('profile')) {
-            document.querySelector('header .profile-icon').setAttribute('href', '/assets/pages/login.html')
+            document.querySelector('header .profile-icon')?.setAttribute('href', 'login.html')
         } else {
-            window.location.href = '/'
+            window.location.href = 'home.html'
         }
 
     }
@@ -234,7 +234,7 @@ const signIn = async (email, password) => {
         alert(`Welcome back, ${user.email}!`);
         console.log("User signed in:", user);
         setTimeout(() => {
-            window.location.href = '/'
+            window.location.href = 'home.html'
         }, 2000);
 
     } catch (error) {

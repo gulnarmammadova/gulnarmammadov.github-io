@@ -42,7 +42,7 @@ const generatePopulars = (data, wrapper) => {
     const movieList = selectRandomElements(data.results, 6)
     movieList.forEach(item => {
         document.querySelector(`.${wrapper} .movie-grid`).innerHTML += `               
-        <a href="assets/pages/details-new.html?id=${item.id}" class="movie-card">
+        <a href="details-new.html?id=${item.id}" class="movie-card">
             <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Loetoeng Kasarung">
                 <div class="movie-info">
                     <h3>${item.title.slice(0, 25)}${item.title.length > 25 ? '...' : ''}</h3>
@@ -63,7 +63,7 @@ const generateGenres = (genres) => {
 
     document.querySelectorAll('.categories a').forEach(item => {
         item.addEventListener('click', ()=> {
-            window.location.href = `assets/pages/category.html?id=${item.getAttribute('data-value')}`
+            window.location.href = `category.html?id=${item.getAttribute('data-value')}`
         })
     })
 
@@ -88,7 +88,7 @@ const trendingMovies = () => {
 const generateTrendings = (data) => {    
     const trendList = selectRandomElements(data, 2)
     trendList.forEach(movie => {
-        document.querySelector('.featured-content').innerHTML += `<a class="featured-item" href="assets/pages/details-new.html?id=${movie.id}">
+        document.querySelector('.featured-content').innerHTML += `<a class="featured-item" href="details-new.html?id=${movie.id}">
                     <img src="https://image.tmdb.org/t/p/original${movie.backdrop_path}" alt="${movie.title}">
                     <div class="featured-item-info">
                         <h2>${movie.title}</h2>

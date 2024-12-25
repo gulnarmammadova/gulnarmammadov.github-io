@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/home.css">
-    <link rel="stylesheet" href="../../common/common.css">
+    <link rel="stylesheet" href="../assets/styles/home.css">
+    <link rel="stylesheet" href="../common/common.css">
 
     <style>
         .movie-card {
@@ -199,7 +199,7 @@
 
             if (res.results.length > 0) {
                 res.results.map(item => {
-                    document.querySelector(".watchlist").innerHTML += `<a href="/assets/pages/details-new.html?id=${item.id}" class="movie-card">
+                    document.querySelector(".watchlist").innerHTML += `<a href="details-new.html?id=${item.id}" class="movie-card">
                                 <div class="img-box">
                                     <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Movie Poster">
                                 </div>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/home.css">
-    <link rel="stylesheet" href="../../common/common.css">
+    <link rel="stylesheet" href="../assets/styles/home.css">
+    <link rel="stylesheet" href="../common/common.css">
 
     <style>
         .movie-card {
@@ -210,7 +210,7 @@
         fetchMoviesByGenre().then(res => {
             console.log(res)
             res.map(item => {
-                document.querySelector(".movie-grid").innerHTML += `<a href="/assets/pages/details-new.html?id=${item.id}" class="movie-card">
+                document.querySelector(".movie-grid").innerHTML += `<a href="details-new.html?id=${item.id}" class="movie-card">
                                 <div class="img-box">
                                     <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="Movie Poster">
                                 </div>
@@ -237,7 +237,7 @@ ${res.page + 4 <= res.total_pages ? `<button class="page-btn ${res.page + 4 == p
 
             document.querySelectorAll('.page-btn').forEach(element => {
                 element.addEventListener('click', (e) => {
-                    window.location.href = `/assets/pages/search.html?query=${urlParams.get("query")}&page=${e.target.textContent}`
+                    window.location.href = `search.html?query=${urlParams.get("query")}&page=${e.target.textContent}`
                 })
             });
         })

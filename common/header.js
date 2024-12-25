@@ -43,8 +43,8 @@ const header = `
 
 document.querySelector('header').innerHTML = header;
 const currentPage = window.location.pathname.slice(1);
-const loginPage = currentPage === 'index.html' ? './assets/pages/login.html' : 'login.html';
-const profilePage = currentPage === 'index.html' ? './assets/pages/profile.html' : 'profile.html';
+const loginPage = currentPage === 'index.html' ? 'login.html' : 'login.html';
+const profilePage = currentPage === 'index.html' ? 'profile.html' : 'profile.html';
 
 document.querySelector('.login-btn').setAttribute('href', loginPage);
 document.querySelector('.user-name').setAttribute('href', profilePage);
@@ -55,7 +55,7 @@ document.querySelector('.search-bar svg').addEventListener('click', () => {
     const searchValue = document.querySelector('header input').value;
 
     if (searchValue) {
-        window.location.href = `/assets/pages/search.html?query=${searchValue}&page=1`
+        window.location.href = `search.html?query=${searchValue}&page=1`
     } else {
         return
     }
@@ -82,7 +82,7 @@ document.querySelector('.mobile-search').addEventListener('click', () => {
         const searchValue = document.querySelector('.mobile-search-bar input').value;
     
         if (searchValue) {
-            window.location.href = `/assets/pages/search.html?query=${searchValue}&page=1`
+            window.location.href = `search.html?query=${searchValue}&page=1`
         } else {
             return
         }

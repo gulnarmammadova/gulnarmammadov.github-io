@@ -19,8 +19,6 @@ const header = `
         <a class="user-name"></a>
         <div class="drop">
             <button class="logout-btn">Logout</button>
-            <button class="logout-btn">Logout</button>
-            <button class="logout-btn">Logout</button>
         </div>
     </div>
 </div>

@@ -115,9 +115,9 @@ async function addToWatchlist(movieId) {
         await setDoc(userDocRef, {
             watchlist: arrayUnion(movieId)
         }, { merge: true });
-        console.log("Movie added to watchlist!");
+        alert('Movie added to watchlist!')
     } else {
-        console.log("User not authenticated");
+        alert('You must login in order to add movie to watchlist!')
     }
 }
 
@@ -136,9 +136,9 @@ async function addToLikedMovies(movieId) {
         await updateDoc(userDocRef, {
             likedMovies: arrayUnion(movieId)
         });
-        console.log("Movie added to liked movies!");
+        alert('Movie was added to watched list!')
     } else {
-        console.log("User not authenticated");
+        alert('You must login in order to mark movie as watched!')
     }
 }
 
